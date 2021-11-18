@@ -2,7 +2,7 @@
 
 class TiposDeDados {
 
-    public function alfaNumerico($dado) { 
+    public function alfaNumerico($dado) { // Aceita qualquer tipo de valor dentro da string
         if(is_string($dado)) {
             return true;
         } else {
@@ -10,7 +10,7 @@ class TiposDeDados {
         }
     }
 
-    public function numerico($dado) { 
+    public function numerico($dado) {   //Aceita somente números em string ou não
         if (!ctype_alpha(trim($dado))) {
             if (is_numeric($dado)) {
                return true;
@@ -22,7 +22,7 @@ class TiposDeDados {
         }
     }
 
-    public function inteiro($dado) { 
+    public function inteiro($dado) { //Segue a mesma lógica do numerico
         if(is_numeric($dado)) {
             if(!is_int($dado + 0)){
                 return false;
@@ -33,7 +33,7 @@ class TiposDeDados {
         }
     }
 
-    public function float($dado) { 
+    public function float($dado) { //Aceita valores de qualquer tamanho com ponto flutuante
         if(is_float($dado + 0)) {
             return true;
         } else {
@@ -41,7 +41,7 @@ class TiposDeDados {
         }
     }
 
-    public function monetario($dado) { 
+    public function monetario($dado) { //Aceita apenas valores monetarios (em string ou não), ex: 17.82
         if(is_float($dado + 0)) {
             $veri = explode('.',$dado);
             if(strlen($veri[1]) != 2) {
@@ -53,7 +53,7 @@ class TiposDeDados {
         }
     }
 
-    public function data($data, $format = 'Y-m-d') { 
+    public function data($data, $format = 'Y-m-d') { // Aceita apenas datas validas no padrão Y-m-d, ex: 2010-05-20
         $veri1 = explode('-', $data);
         if (count($veri1) != 3) {
             return false;
@@ -76,7 +76,7 @@ class TiposDeDados {
         return true;
 }
 
-public function dataTime($data, $format = 'Y-m-d H:i:s') { 
+public function dataTime($data, $format = 'Y-m-d H:i:s') { //Segue a mesma logica do função data(), porém com horas, minutos e segundos
     $veri1 = explode('-', $data);
 
     if (count($veri1) != 3) {
@@ -152,7 +152,7 @@ public function dataTime($data, $format = 'Y-m-d H:i:s') {
     return true;
 }
 
-public function booleano($dado) { 
+public function booleano($dado) { // 0 para false e 1 para true, o que for diferente de 1 é false
     if ($dado != 1) {
         return false;
     } 
@@ -167,7 +167,7 @@ public function booleano($dado) {
     return true;
 }
 
-public function cpfCnpj($cpfCnpj) {
+public function cpfCnpj($cpfCnpj) { // Aceita apenas cpf ou cnpj válidos
     $cpfCnpj = preg_replace('/[^0-9]/is', '', $cpfCnpj);
     if(empty($cpfCnpj)){
         return false;
@@ -240,8 +240,4 @@ public function cpfCnpj($cpfCnpj) {
 
 }
 
-
-
-    $x = new TiposDeDados;
-    
 
