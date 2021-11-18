@@ -207,6 +207,19 @@ public function cpfCnpj($cpfCnpj) {
     } else{
         if (strlen($cpfCnpj) != 14) {
             return false;
+        } 
+        if (
+            $cpfCnpj == '00000000000000' || 
+            $cpfCnpj == '11111111111111' || 
+            $cpfCnpj == '22222222222222' || 
+            $cpfCnpj == '33333333333333' || 
+            $cpfCnpj == '44444444444444' || 
+            $cpfCnpj == '55555555555555' || 
+            $cpfCnpj == '66666666666666' || 
+            $cpfCnpj == '77777777777777' || 
+            $cpfCnpj == '88888888888888' || 
+            $cpfCnpj == '99999999999999') {
+            return false;
         }
     
         for ($t = 12; $t < 14; $t++) {
